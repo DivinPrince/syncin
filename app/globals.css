@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+:root {
+  height: 100%;
+}
+
+* {
+  scroll-behavior: contain;
+}
+
+.has-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  /* for vertical scroll */
+  height: 12px;
+  /* for horizontal scroll */
+}
+
+*::-webkit-scrollbar-track {
+  /* background: var(--white); */
+  border-left: 1px solid grey;
+  padding: 3px;
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb {
+  /* background: transparent;
+  border: 3px solid #171717; */
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.has-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: hsl(0, 0%, 90%);
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(0, 0%, 80%);
+}
+
+button {
+  margin: 0;
+}
+
+input {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+}
+
+.button_Auth {
+  padding: 0.5rem 1rem;
+  margin-top: 24px;
+}
+
+svg {
+  stroke: black;
+}
+
+.link {
+  @apply text-neutral-400
+}
+
+.header {
+  border-bottom: 1px solid grey;
+}
+
+.list {
+  position: sticky;
+  top: 300px;
+  left: 0;
+  
+  overscroll-behavior: auto;
+}
+
+.aside{
+  border-left: 1px solid grey;
+}
