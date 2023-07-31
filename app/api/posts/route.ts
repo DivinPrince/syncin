@@ -5,27 +5,24 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
   try {
-    
-    if (req.method === 'POST') {
-      const currentUser = await getCurrentUser()
-      const { body } = req.body;
+    const currentUser = await getCurrentUser();
+    const { body } = req.body;
 
-      const post = await prisma.post.create({
-        data: {
-          body,
-          CreatorId: currentUser!.id
-        }
-      });
+    const post = await prisma.post.create({
+      data: {
+        body,
+        CreatorId: currentUser!.id,
+      },
+    });
 
-      return NextResponse.json(post);
-    }
+    return NextResponse.json(post);
   } catch (error) {
     console.log(error);
     return NextResponse.error();
   }
 }
 
-export async function GET(req: NextApiRequest,context: {params: string}) {
+export async function GET(req: NextApiRequest, context: { params: string }) {
   try {
     const userId = context.params;
 
