@@ -37,7 +37,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
         <div className="absolute bottom-24">
           <EmojiPicker
             data={data}
-            onEmojiSelect={handleEmojiClick}
+            // onEmojiSelect={handleEmojiClick}
             title="Pick your emoji"
             emoji="point_up"
           />

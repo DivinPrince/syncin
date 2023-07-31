@@ -1,7 +1,5 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
-
-import getCurrentUser from "@/app/actions/getCurrentUser";
 // import { pusherServer } from "@/app/libs/pusher";
 import prisma from "@/lib/db";
 import { pusherServer } from "@/lib/pusher";
