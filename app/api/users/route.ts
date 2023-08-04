@@ -1,11 +1,9 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
 import prisma from "@/lib/db";
 
 export async function GET(
-  req: NextApiRequest,
-  res: NextApiResponse
+  req: Request,
 ) {
   try {
     const users = await prisma.user.findMany({
