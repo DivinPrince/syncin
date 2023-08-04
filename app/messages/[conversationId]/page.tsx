@@ -5,13 +5,13 @@ import React from "react";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Form from "./components/Form";
+import getCurrentUser from "@/app/actions/getCurrentUser";
 interface Iparams {
   conversationId: string;
 }
 const page = async ({ params }: { params: Iparams }) => {
   const conversation = await getConversationById(params.conversationId);
   const messages = await getMessages(params.conversationId);
-
   if (!conversation) {
     return (
       <div

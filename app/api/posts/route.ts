@@ -22,38 +22,17 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-export async function GET(req: NextApiRequest, context: { params: string }) {
+export async function GET() {
   try {
-    const userId = context.params;
-
-    console.log({ userId });
-
-    let posts;
-
-    if (userId && typeof userId === "string") {
-      posts = await prisma.post.findMany({
-        where: {
-          CreatorId: userId,
-        },
-        include: {
-          Creator: true,
-          comments: true,
-        },
-        orderBy: {
-          createdAt: "desc",
-        },
-      });
-    } else {
-      posts = await prisma.post.findMany({
-        include: {
-          Creator: true,
-          comments: true,
-        },
-        orderBy: {
-          createdAt: "desc",
-        },
-      });
-    }
+    const posts = await prisma.post.findMany({
+      include: {
+        Creator: true,
+        comments: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
     return NextResponse.json(posts);
   } catch (error) {
     console.log(error);

@@ -7,7 +7,6 @@ import { Body } from './components/Body';
 export default async function page() {
 
    const currentUser = await getCurrentUser()
-
   return (
     <div className='has-scrollbar bg-neutral-900 rounded-[5px] h-full w-full overflow-y-auto'>
       <Header currentUser={currentUser}/>
