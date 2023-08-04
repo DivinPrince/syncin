@@ -3,7 +3,6 @@ import Image from "next/image";
 import React from "react";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
-import getUserById from "@/app/actions/getUserById";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import useUser from "@/hooks/useUser";
 

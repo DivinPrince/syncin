@@ -10,7 +10,6 @@ import useOtheUser from "@/hooks/useOtheUser";
 
 import Avatar from '@/components/Avatar';
 import AvatarGroup from "@/components/AvatarGroup";
-import ProfileDrawer from "./ProfileDrawer";
 
 interface HeaderProps {
   conversation: Conversation & {
@@ -72,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
       </div>
       <HiEllipsisHorizontal
         size={32}
-        onClick={() => setDrawerOpen(true)}
+        onClick={() =>{}}
         className="
           text-white
           cursor-pointer

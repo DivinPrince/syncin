@@ -5,6 +5,7 @@ import { Post } from '@prisma/client'
 import PostCard from '@/components/posts/PostCard'
 import PostCardLoader from '@/components/posts/PostCardLoader'
 import usePosts from '@/hooks/usePosts'
+import { PostType } from '@/types'
 interface PostListProps {
   userId?: string
 }
@@ -14,7 +15,7 @@ const PostList: React.FC<PostListProps> = ({
   const { data: posts = [] } = usePosts();
   return (
     <div className='w-full flex flex-wrap justify-center gap-4'>
-      {posts.map((post: Post) => (
+      {posts.map((post: PostType) => (
           <PostCard key={post.id} data={post} />
       ))
       }

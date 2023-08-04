@@ -1,4 +1,3 @@
-import getUserById from '@/app/actions/getUserById'
 import { Comment } from '@prisma/client'
 import React, { FC } from 'react'
 import CommentItem from './CommentItem'
