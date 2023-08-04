@@ -27,9 +27,7 @@ const SyncMateList = () => {
     >
       <h1 className="font-semibold text-[15px]">New Recent Users</h1>
       <div className="flex flex-col gap-2">
-        {items.map((item) => (
-          <NewUserItem data={item} />
-        ))}
+        
       </div>
     </div>
   );
