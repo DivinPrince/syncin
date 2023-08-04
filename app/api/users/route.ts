@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 import prisma from "@/lib/db";
 
-export default async function GET(
+export async function GET(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
