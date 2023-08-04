@@ -2,7 +2,6 @@ import { Comment } from '@prisma/client'
 import React from 'react'
 import Avatar from '../Avatar'
 import { format } from 'date-fns'
-import getUserById from '@/app/actions/getUserById'
 import useUser from '@/hooks/useUser'
 
 interface ItemProps {
