@@ -1,10 +1,8 @@
-'use client'
 import NewUserItem from '@/components/user/NewUserItem'
 import { User } from '@prisma/client'
 import React from 'react'
 import { BiLoaderAlt } from 'react-icons/bi'
 import { motion } from 'framer-motion'
-import { signOut } from 'next-auth/react'
 interface UserListProps {
    items: User[]
 }
@@ -35,13 +33,6 @@ const NewUserList: React.FC<UserListProps> = ({
            <NewUserItem data={item} />
          ))}
        </div>
-       <button
-         onClick={() => {
-           signOut();
-         }}
-       >
-         signout
-       </button>
      </div>
    );
 }
