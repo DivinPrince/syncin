@@ -5,36 +5,15 @@ import getCurrentUser from "./getCurrentUser";
 const getPosts = async () => {
    try {
       const currentUser = await getCurrentUser()
-      const data = await prisma.post.findMany({
-         orderBy: {
-            createdAt: "desc"
-         },
-         select: {
-            id: true,
-            content: true,
-            createdAt: true,
-            image: true,
-            likes: currentUser?.id == null ? false : { where: { userId: currentUser.id } },
-            comments: true,
-            _count: { select: { likes: true, comments: true } },
-            Creator: {
-               select: { name: true, id: true, image: true }
-            }
-         }
-      })
+      const Posts = await prisma.post.findMany({
+        orderBy: {
+          createdAt: "desc",
+        },
+        include: {
+         comments: true
+        }
+      });
 
-      const Posts = data.map((post) => {
-         return {
-            id: post.id,
-            content: post.content,
-            createdAt: post.createdAt,
-            image: post.image,
-            likes: post.likes,
-            comments: post.comments,
-            Creator: post.Creator,
-            likedByme: post.likes?.length > 0,
-         }
-      })
       return Posts
    } catch (error) {
       return [{

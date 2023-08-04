@@ -5,7 +5,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 export async function POST(request: Request) {
   try {
     const currentUser = await getCurrentUser();
-    const { body } = req.body;
+    const body = await request.json();
 
     const post = await prisma.post.create({
       data: {

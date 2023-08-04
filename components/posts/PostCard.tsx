@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 
 import { Post } from '@prisma/client'
-import getUserById from '@/app/actions/getUserById'
 import Avatar from '../Avatar'
 import Image from 'next/image'
 import HeartButton from '../buttons/HeartButton'
@@ -12,9 +11,10 @@ import { useSession } from 'next-auth/react'
 import CommentList from '../comments/CommentList'
 import { clsx } from 'clsx'
 import useUser from '@/hooks/useUser'
+import { PostType } from '@/types'
 
 interface PostCardPromps {
-  data: Post
+  data: PostType
 }
 
 const PostCard: React.FC<PostCardPromps> = ({
@@ -42,10 +42,12 @@ const PostCard: React.FC<PostCardPromps> = ({
       <div className="flex gap-4">
         <HeartButton
           likeCount={data.likedIds.length}
-          likedByme={data.likedByme}
+          likedByme={false}
         />
         <CommentButton
-          commentCount={data.comments.length}
+          commentCount={data.coments.length}
+          commentedByme={false}
+          onClick={()=>{}}
         />
       </div>
     </div>
