@@ -14,13 +14,6 @@ export const Body = async () => {
     <div className="text-white p-5 flex relative">
       <PostList />
       <NewUserList items={NewUsers} />
-      <button
-        onClick={() => {
-          signOut();
-        }}
-      >
-        signout
-      </button>
     </div>
   );
 }
