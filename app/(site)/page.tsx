@@ -12,13 +12,6 @@ export default async function page() {
     <div className="has-scrollbar bg-neutral-900 rounded-[5px] h-full w-full overflow-y-auto">
       <Header currentUser={currentUser!} />
       <Body />
-      <button
-        onClick={() => {
-          signOut();
-        }}
-      >
-        signout
-      </button>
     </div>
   );
 }
