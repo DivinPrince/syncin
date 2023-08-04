@@ -82,7 +82,7 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json(updatedUser, currentUserUpdate);
+    return NextResponse.json(updatedUser);
   } catch (error) {
     console.log(error);
     return NextResponse.error();
