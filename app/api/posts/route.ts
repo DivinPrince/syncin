@@ -1,9 +1,8 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@/lib/db";
 import { NextResponse } from "next/server";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(request: Request) {
   try {
     const currentUser = await getCurrentUser();
     const { body } = req.body;
