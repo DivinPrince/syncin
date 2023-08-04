@@ -26,10 +26,10 @@ const UserBio: React.FC<bioProps> = ({ userId }) => {
         currentUser.id == fetchedUser.id &&
         <div className="flex flex-col gap-2">
           <button>Edit</button>
-          <button onClick={()=>{signOut()}}>signout</button>
+          <Link href="/signin" >login</Link>
         </div>
       ):(
-        <Link href="/signin" >login</Link>
+        <button onClick={()=>{signOut()}}>signout</button>
       )}
 
 
