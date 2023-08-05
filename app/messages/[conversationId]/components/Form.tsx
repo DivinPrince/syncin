@@ -1,52 +1,50 @@
-'use client'
+"use client";
 
-import { 
-  HiPaperAirplane, 
-  HiPhoto,
-  HiFaceSmile
-} from "react-icons/hi2";
-import {BiLaugh} from 'react-icons/bi'
+import { HiPaperAirplane, HiPhoto, HiFaceSmile } from "react-icons/hi2";
+import { BiLaugh } from "react-icons/bi";
 import MessageInput from "./MessageInput";
-import { 
-  FieldValues, 
-  SubmitHandler, 
-  useForm 
-} from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import { CldUploadButton } from "next-cloudinary";
 import useConversation from "@/hooks/useConversation";
-
+import { useState } from "react";
+import ImageUpload from "@/components/ImageUpload";
 
 const Form = () => {
   const { conversationId } = useConversation();
+  const [imageData, setImageData] = useState('')
 
   const {
     register,
     handleSubmit,
     setValue,
-    formState: {
-      errors,
-    }
+    formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      message: ''
-    }
+      message: "",
+    },
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setValue('message', '', { shouldValidate: true });
-    axios.post('/api/messages', {
+    setValue("message", "", { shouldValidate: true });
+    axios.post("/api/messages", {
       ...data,
-      conversationId: conversationId
-    })
-  }
-
-  const handleUpload = (result: any) => {
-    axios.post('/api/messages', {
-      image: result.info.secure_url,
-      conversationId: conversationId
-    })
-  }
+      conversationId: conversationId,
+    });
+  };
+  
+  const onUpload = (e: any) => {
+    const reader = new FileReader();
+    
+    reader.readAsDataURL(e.target.files[0]);
+    reader.addEventListener("loadend", () => {
+      setImageData(reader.result as string)
+    });
+    axios.post("/api/messages", {
+      image: imageData,
+      conversationId: conversationId,
+    });
+  };
 
   return (
     <div
@@ -62,13 +60,14 @@ const Form = () => {
         w-full
       "
     >
-      <CldUploadButton
-        options={{ maxFiles: 1 }}
-        onUpload={handleUpload}
-        uploadPreset="ouou8fwr"
+      <ImageUpload
+        onUpload={(e) => {
+          onUpload(e);
+        }}
+        usedrag={false}
       >
         <HiPhoto size={30} className="text-gray-500" />
-      </CldUploadButton>
+      </ImageUpload>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -97,6 +96,6 @@ const Form = () => {
       </form>
     </div>
   );
-}
- 
+};
+
 export default Form;
