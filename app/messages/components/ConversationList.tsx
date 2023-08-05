@@ -1,6 +1,6 @@
 "use client";
 import useConversation from "@/hooks/useConversation";
-import { FullConversatioType } from "@/types";
+import { FullConversationType } from "@/types";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
@@ -9,7 +9,7 @@ import { MdOutlineGroupAdd } from "react-icons/md";
 import ConversationBox from "./ConversationBox";
 import { signOut } from "next-auth/react";
 interface ConversationListProps {
-  initialItems: FullConversatioType[];
+  initialItems: FullConversationType[];
 }
 
 const ConversationList: FC<ConversationListProps> = ({ initialItems }) => {

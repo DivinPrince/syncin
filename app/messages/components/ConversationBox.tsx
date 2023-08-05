@@ -3,14 +3,14 @@ import React, { FC, useCallback, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import useOtheUser from "@/hooks/useOtheUser";
 import { useRouter } from "next/navigation";
-import { FullConversatioType } from "@/types";
+import { FullConversationType } from "@/types";
 import clsx from "clsx";
 import { format } from "date-fns/esm";
 import Avatar from "@/components/Avatar";
 import AvatarGroup from "@/components/AvatarGroup";
 
 interface ConversationBoxProps {
-  data: FullConversatioType;
+  data: FullConversationType;
   selected?: boolean;
 }
 const ConversationBox: FC<ConversationBoxProps> = ({ data, selected }) => {
