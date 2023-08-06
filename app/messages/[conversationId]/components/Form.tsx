@@ -39,10 +39,10 @@ const Form = () => {
     reader.readAsDataURL(e.target.files[0]);
     reader.addEventListener("loadend", () => {
       setImageData(reader.result as string)
-    });
-    axios.post("/api/messages", {
-      image: imageData,
-      conversationId: conversationId,
+      axios.post("/api/messages", {
+        image: imageData,
+        conversationId: conversationId,
+      });
     });
   };
 
