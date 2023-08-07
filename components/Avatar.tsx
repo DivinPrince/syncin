@@ -5,11 +5,16 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import useUser from "@/hooks/useUser";
+import useActiveList from "@/hooks/useActiveList";
 
 interface DesktopSideBarProps {
   user: User;
 }
 const Avatar: React.FC<DesktopSideBarProps> = ({ user }) => {
+
+  const {members} = useActiveList()
+
+  const isActive = members.indexOf(user?.email!) !== -1
   // const fetchedUser = useUser(user.id)
   return (
     <Link href={`/profiles/${user?user.id : ""}`}>
@@ -21,7 +26,9 @@ const Avatar: React.FC<DesktopSideBarProps> = ({ user }) => {
             fill
           />
         </div>
-        <span className="absolute block rounded-full bg-green-500 top-0 right-0 h-2 w-2 md:h-3 md:w-3"></span>
+        {isActive &&(
+          <span className="absolute block rounded-full bg-green-500 top-0 right-0 h-2 w-2 md:h-3 md:w-3"></span>
+        )}
       </div>
     </Link>
   );

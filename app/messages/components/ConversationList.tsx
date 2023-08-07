@@ -3,11 +3,13 @@ import useConversation from "@/hooks/useConversation";
 import { FullConversationType } from "@/types";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
-import { FC, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 
 import { MdOutlineGroupAdd } from "react-icons/md";
 import ConversationBox from "./ConversationBox";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+import { pusherClient } from "@/lib/pusher";
+import { find } from "lodash";
 interface ConversationListProps {
   initialItems: FullConversationType[];
 }
@@ -16,6 +18,51 @@ const ConversationList: FC<ConversationListProps> = ({ initialItems }) => {
   const [items, setItems] = useState(initialItems);
   const { isOpen, conversationId } = useConversation();
   const router = useRouter();
+  const session = useSession()
+
+  const pusherKey = useMemo(() => {
+    return session.data?.user?.email;
+  }, [session.data?.user?.email]);
+
+  useEffect(() => {
+    if (!pusherKey) {
+      return;
+    }
+
+    pusherClient.subscribe(pusherKey);
+
+    const updateHandler = (conversation: FullConversationType) => {
+      setItems((current) => current.map((currentConversation) => {
+        if (currentConversation.id === conversation.id) {
+          return {
+            ...currentConversation,
+            messages: conversation.messages
+          };
+        }
+
+        return currentConversation;
+      }));
+    }
+
+    const newHandler = (converstion: FullConversationType) => {
+      setItems((current) => {
+        if (find(current), { id: converstion.id }) {
+          return current
+        }
+
+        return [converstion, ...current]
+      })
+    }
+    pusherClient.bind('conversation:update', updateHandler)
+    pusherClient.bind('conversation:new', newHandler)
+    
+    return () => {
+      pusherClient.unsubscribe(pusherKey);
+      
+      pusherClient.unbind('conversation:new', newHandler)
+      pusherClient.unbind('conversation:update', updateHandler)
+    }
+  }, [pusherKey])
 
   return (
     <aside
@@ -48,7 +95,7 @@ const ConversationList: FC<ConversationListProps> = ({ initialItems }) => {
             hover:opacity-75
             transition
           "
-          onClick={()=>signOut()}
+            onClick={() => signOut()}
           >
             <MdOutlineGroupAdd size={20} />
           </div>

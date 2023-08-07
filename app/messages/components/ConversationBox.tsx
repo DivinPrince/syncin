@@ -79,14 +79,14 @@ const ConversationBox: FC<ConversationBoxProps> = ({ data, selected }) => {
       {data.isGroup ? (
         <AvatarGroup users={data.users} />
       ) : (
-        <Avatar user={otherUser[0]} />
+        <Avatar user={otherUser} />
       )}
       <div className="min-w-0 flex-1">
         <div className="focus:outline-none">
           <span className="absolute inset-0" aria-hidden="true" />
           <div className="flex justify-between items-center mb-1">
             <p className="text-md font-medium text-gray-100">
-              {data.name || otherUser[0].name}
+              {data.name || otherUser.name}
             </p>
             {lastMessage?.createdAt && (
               <p

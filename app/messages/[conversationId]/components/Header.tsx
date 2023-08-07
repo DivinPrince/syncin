@@ -10,6 +10,7 @@ import useOtheUser from "@/hooks/useOtheUser";
 
 import Avatar from '@/components/Avatar';
 import AvatarGroup from "@/components/AvatarGroup";
+import useActiveList from '@/hooks/useActiveList';
 
 interface HeaderProps {
   conversation: Conversation & {
@@ -19,12 +20,14 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ conversation }) => {
   const otherUser = useOtheUser(conversation);
+  const {members} = useActiveList()
+  const isActive = members.indexOf(otherUser.email!) !== -1
   const statusText = useMemo(() => {
     if (conversation.isGroup) {
       return `${conversation.users.length} members`;
     }
 
-    return 'Active' 
+    return isActive ? 'Active' : 'Offline' 
   }, [conversation]);
 
   return (
@@ -60,10 +63,10 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
         {conversation.isGroup ? (
           <AvatarGroup users={conversation.users} />
         ) : (
-          <Avatar user={otherUser[0]} />
+          <Avatar user={otherUser} />
         )}
         <div className="flex flex-col">
-          <div className='text-white font-semibold'>{conversation.name || otherUser[0].name}</div>
+          <div className='text-white font-semibold'>{conversation.name || otherUser.name}</div>
           <div className="text-sm font-medium text-neutral-400">
             {statusText}
           </div>

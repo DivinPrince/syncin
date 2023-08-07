@@ -1,6 +1,7 @@
 import AuthContext from "@/context/AuthContext";
 import "./globals.css";
 import ToasterContext from "@/context/ToasterContext";
+import ActiveStatus from "@/components/ActiveStatus";
 
 export const metadata = {
   title: "Syncin",
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body>
         <AuthContext>
           <ToasterContext />
+          <ActiveStatus />
           {children}
         </AuthContext>
       </body>
