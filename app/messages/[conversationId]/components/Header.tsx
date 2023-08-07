@@ -20,15 +20,16 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ conversation }) => {
   const otherUser = useOtheUser(conversation);
-  const {members} = useActiveList()
-  const isActive = members.indexOf(otherUser.email!) !== -1
+  const { members } = useActiveList();
+  
+  const isActive = members.indexOf(otherUser?.email!) !== -1;
   const statusText = useMemo(() => {
     if (conversation.isGroup) {
       return `${conversation.users.length} members`;
     }
 
-    return isActive ? 'Active' : 'Offline' 
-  }, [conversation]);
+    return isActive ? 'Active' : 'Offline'
+  }, [conversation, isActive]);
 
   return (
   <>
