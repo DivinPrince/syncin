@@ -1,4 +1,5 @@
 import AuthContext from "@/context/AuthContext";
+import { ThemeProvider } from "@/context/ThemeProvider";
 import "./globals.css";
 import ToasterContext from "@/context/ToasterContext";
 import ActiveStatus from "@/components/ActiveStatus";
@@ -18,11 +19,13 @@ export default function RootLayout({
     <html lang="en">
       <head></head>
       <body>
-        <AuthContext>
-          <ToasterContext />
-          <ActiveStatus />
-          {children}
-        </AuthContext>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <AuthContext>
+            <ToasterContext />
+            <ActiveStatus />
+            {children}
+          </AuthContext>
+        </ThemeProvider>
       </body>
     </html>
   );
