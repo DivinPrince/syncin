@@ -44,12 +44,6 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
     const updateMessageHandler = (newMessage: FullMessageType) => {
       setMessages((current) => current.map((currentMessage) => {
         if (currentMessage.id === newMessage.id) {
-          const title = document.createElement('title')
-          title.textContent = `${newMessage.sender.name}: ${newMessage.body}`
-
-          setTimeout(() => {
-            title.remove()
-          }, 5000);
           return newMessage;
         }
   
