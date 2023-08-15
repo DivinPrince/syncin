@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import useConversation from "./useConversation";
 
 import { HiHome, HiChat, HiUsers } from 'react-icons/hi'
-import { BiSearch } from 'react-icons/bi'
+import { BiPlus, BiSearch, BiSolidPlusSquare } from 'react-icons/bi'
 
 const useRoutes = () => {
    const params = useParams()
@@ -29,6 +29,12 @@ const useRoutes = () => {
          label: 'SyncMates',
          active: pathname === '/syncmates',
          href: '/syncmates'
+      },
+      {
+         icon: BiSolidPlusSquare,
+         label: 'Create post',
+         active: pathname === '/posts/new',
+         href: '/posts/new'
       },
    ], [pathname, conversationId])
 

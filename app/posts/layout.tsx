@@ -1,7 +1,7 @@
 import Sidebar from "@/components/sidebar/Sidebar";
 
 export const metadata = {
-  title: "Syncin | Home",
+  title: "syncin | Post",
   description: "let's sync",
 };
 

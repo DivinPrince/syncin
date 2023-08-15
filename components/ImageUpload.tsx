@@ -7,7 +7,7 @@ interface ImageUploadProps {
   usedrag: boolean;
   children?: React.ReactNode;
 }
-const ImageUpload: FC<ImageUploadProps> = ({ onUpload, usedrag, children }) => {
+const ImageUpload: FC<ImageUploadProps> = ({ onUpload, usedrag,children }) => {
   const ref = useRef<any>(null);
 
   const click = () => {
@@ -17,6 +17,7 @@ const ImageUpload: FC<ImageUploadProps> = ({ onUpload, usedrag, children }) => {
       return;
     }
   };
+
   return (
     <>
       <input

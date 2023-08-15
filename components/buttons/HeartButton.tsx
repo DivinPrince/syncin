@@ -4,8 +4,9 @@ import { VscHeartFilled, VscHeart } from "react-icons/vsc";
 interface HeartButtonProps {
   likedByme: boolean;
   likeCount: number;
+  onClick: () => void
 }
-const HeartButton: React.FC<HeartButtonProps> = ({ likedByme, likeCount }) => {
+const HeartButton: React.FC<HeartButtonProps> = ({ likedByme, likeCount, onClick }) => {
   const HeartIcon = likedByme ? VscHeartFilled : VscHeart;
   return (
     <button
@@ -15,6 +16,7 @@ const HeartButton: React.FC<HeartButtonProps> = ({ likedByme, likeCount }) => {
     `,
         likedByme && "text-red-500"
       )}
+      onClick={onClick}
     >
       <HeartIcon
         size={25}

@@ -91,8 +91,8 @@ model Post {
   Creator   User @relation(fields: [CreatorId], references: [id], onDelete: Cascade)
   CreatorId String @db.ObjectId
 
-  body  String
-  image String?
+  description  String
+  image String
 
   likedIds String[] @db.ObjectId
 

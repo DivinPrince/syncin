@@ -6,12 +6,17 @@ export async function POST(request: Request) {
   try {
     const currentUser = await getCurrentUser();
     const body = await request.json();
+    const {image, description} = body
 
     const post = await prisma.post.create({
       data: {
-        body,
+        image,
+        description,
         CreatorId: currentUser!.id,
       },
+      include:{
+        comments: true
+      }
     });
 
     return NextResponse.json(post);
