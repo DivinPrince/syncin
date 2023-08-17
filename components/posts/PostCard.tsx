@@ -66,7 +66,7 @@ const PostCard: React.FC<PostCardPromps> = ({
         </div>
         <span className="text-gray-500">{formattedDate}</span>
       </div>
-      <Image className="rounded-xl" src={data.image!} fill alt="image" />
+      <Image className="rounded-xl w-full" src={data.image!} width={500} alt="image" />
       <div className="flex gap-4">
         <HeartButton
           likeCount={likes.length || 0}
