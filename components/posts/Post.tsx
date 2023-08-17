@@ -10,12 +10,6 @@ interface postProps {
 }
 const Post:FC<postProps> = ({postId}) => {
      const { data: fetchedPost, isLoading } = usePost(postId);
-
-     useEffect(()=>{
-       pusherClient.subscribe(postId)
-
-       pusherClient.bind('like:new',likeHandler)
-     },[postId])
   return (
     <>
       <PostCard data={fetchedPost} />

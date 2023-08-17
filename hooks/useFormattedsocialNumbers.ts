@@ -1,4 +1,4 @@
-const useFormattedsocialNumbers = (number: any) => {
+const useFormattedsocialNumbers = (number: number) => {
        if (number < 1000) {
          return number.toString(); // No formatting needed for numbers below 1000
        } else if (number < 1000000) {
