@@ -4,7 +4,6 @@ import React from 'react'
 import PostList from '@/components/posts/PostList'
 import NewUserList from '@/components/user/NewUserList'
 import getNewUsers from '@/app/actions/getNewUsers'
-import usePosts from '@/hooks/usePosts'
 import { signOut } from 'next-auth/react'
 
 export const Body = async () => {
