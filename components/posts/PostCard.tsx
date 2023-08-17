@@ -57,7 +57,7 @@ const PostCard: React.FC<PostCardPromps> = ({
   const commentedByme = data.comments?.indexOf(currentUser?.id) !== -1
 
   return (
-    <div className="flex flex-col gap-4 border-b px-4 py-4 w-[500px]">
+    <div className="relative flex flex-col gap-4 border-b px-4 py-4 w-[500px]">
       <div className="flex gap-4 items-center">
         <Avatar user={fetchedUser!} />
         <div className="flex flex-grow flex-col">
