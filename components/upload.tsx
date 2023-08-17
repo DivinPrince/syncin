@@ -14,7 +14,7 @@ interface ImageUploadProps {
   disabled?: boolean;
   onChange: (value: any) => void;
   onRemove: (value: string) => void;
-  value: string[];
+  value: string | undefined;
 }
 
 const Upload: React.FC<ImageUploadProps> = ({
@@ -70,7 +70,7 @@ const Upload: React.FC<ImageUploadProps> = ({
       </div>
       <ImageUpload onUpload={(e) => {
         onUpload(e);
-      }} usedrag={false}>
+      }} usedrag={true}>
         <Button
           type="button"
           disabled={disabled}

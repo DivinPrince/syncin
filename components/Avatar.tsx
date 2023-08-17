@@ -7,6 +7,7 @@ import Link from "next/link";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import useUser from "@/hooks/useUser";
 import useActiveList from "@/hooks/useActiveList";
+import { GoOrganization } from "react-icons/go";
 
 interface DesktopSideBarProps {
   user: User;

@@ -17,6 +17,7 @@ import useCurrentUser from '@/hooks/useCurrentUser'
 import useLike from '@/hooks/useLike'
 import { pusherClient } from '@/lib/pusher'
 import { find } from 'lodash'
+import { GoOrganization } from 'react-icons/go'
 
 interface PostCardPromps {
   data: PostType
@@ -46,13 +47,16 @@ const PostCard: React.FC<PostCardPromps> = ({
 
     };
     pusherClient.bind('like:new', likeHandler)
+    return ()=>{
+      pusherClient.unbind('like:new', likeHandler)
+    }
   }, [postId])
 
   const toogleComment = () =>{
     setshowComment(!showComment)
   }
   const { likedByMe, like } = useLike(data.id)
-  const commentedByme = data.coments.indexOf(currentUser.id) !== -1
+  const commentedByme = data.coments?.indexOf(currentUser.id) !== -1
 
   return (
     <div className="flex flex-col gap-4 border-b px-4 py-4 w-[500px]">
@@ -64,15 +68,15 @@ const PostCard: React.FC<PostCardPromps> = ({
         </div>
         <span className="text-gray-500">{formattedDate}</span>
       </div>
-      <Image className="rounded-xl" src={data.image!} alt="image" />
+      <Image className="rounded-xl" src={data.image!} fill alt="image" />
       <div className="flex gap-4">
         <HeartButton
-          likeCount={likes.length}
+          likeCount={likes.length || 0}
           likedByme={likedByMe}
           onClick={()=>{like}}
         />
         <CommentButton
-          commentCount={data.coments.length}
+          commentCount={data.coments.length || 0}
           commentedByme={commentedByme}
           onClick={()=>{}}
         />

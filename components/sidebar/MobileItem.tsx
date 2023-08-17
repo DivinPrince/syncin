@@ -29,6 +29,7 @@ export const MobileItem: React.FC<ItemProps> = ({
               hover:opacity-75 
               transition
               m-0
+              text-black
               "
       >
          <Icon/>

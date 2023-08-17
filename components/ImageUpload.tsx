@@ -17,7 +17,15 @@ const ImageUpload: FC<ImageUploadProps> = ({ onUpload, usedrag,children }) => {
       return;
     }
   };
+  
+  const onDrop =(e: any)=>{
+    e.preventDefault();
+    e.stopPropagation();
 
+    console.log(e);
+    
+    
+  }
   return (
     <>
       <input

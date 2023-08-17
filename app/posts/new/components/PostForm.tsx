@@ -20,6 +20,7 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Image from 'next/image';
 import Upload from '@/components/upload';
+import { format } from 'date-fns';
 const formSchema = z.object({
    description: z.string().min(1),
    image: z.string().min(1).optional(),
@@ -44,14 +45,23 @@ const PostForm = () => {
       setLoading(false);
       axios.post('/api/posts', data)
          .then(() => {
+            form.reset()
             router.push('/')
          })
          .catch((error) => {
+            form.reset()
             toast.error("something went wrong")
          }).finally(() => {
             setLoading(false)
          })
    };
+   const cancel = () =>{
+      form.reset()
+      router.push("/")
+   }
+   const formattedDate = format(new Date("2023-09-15T09:57:14.302Z"), "MMMM d, yyyy");
+   console.log(formattedDate);
+   
    return (
       <Form {...form}>
          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full md:w-[500px] space-y-8">
@@ -93,11 +103,12 @@ const PostForm = () => {
                />
 
             </div>
+            
             <div className='flex justify-end gap-2'>
-               <Button disabled={loading} onClick={()=>{router.push('/')}} variant="secondary" className="w-[100px]">
+               <Button disabled={loading} onClick={cancel} type='button' variant="secondary" className="w-[100px]">
                   Cancel
                </Button>
-               <Button disabled={loading} className="w-[100px]" type="submit">
+               <Button disabled={loading}className="w-[100px]" type="submit">
                   Post
                </Button>
             </div>

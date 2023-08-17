@@ -7,9 +7,5 @@ export default withAuth({
 })
 
 export const config = {
-   matcher: [
-     '/', 
-     '/messages/:path*', 
-     '/syncmates/:path*',
-   ]
+   matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"]
 }

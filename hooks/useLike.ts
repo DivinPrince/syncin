@@ -8,7 +8,7 @@ import usePost from "./usePost";
 const useLike = (postId: string) => {
    const { data: currentUser, mutate: mutateCurrentUser } = useCurrentUser();
    const { data: post} = usePost(postId);
-   const userId = currentUser.id
+   const userId = currentUser?.id
    
    const likedByMe = useMemo(() => {
       const list = post?.likedIds || [];

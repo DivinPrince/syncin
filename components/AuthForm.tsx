@@ -12,6 +12,8 @@ import Button from "./Button";
 
 import { toast } from "react-hot-toast";
 import AuthSocialButton from "@/app/(site)/components/AuthSocialButton";
+import { truncate } from "lodash";
+import { TrendingUpIcon } from "lucide-react";
 
 type Variant = "LOGIN" | "REGISTER";
 
@@ -56,7 +58,7 @@ const AuthForm = () => {
         .then(() =>
           signIn("credentials", {
             ...data,
-            redirect: false,
+            redirect: true,
           })
         )
         .then((callback) => {
@@ -65,7 +67,7 @@ const AuthForm = () => {
           }
 
           if (callback?.ok) {
-            router.push("/");
+            // router.push("/");
             toast.success(`let's syncin ${data.name}`);
           }
         })
@@ -76,7 +78,7 @@ const AuthForm = () => {
     if (variant === "LOGIN") {
       signIn("credentials", {
         ...data,
-        redirect: false,
+        redirect: true,
       })
         .then((callback) => {
           if (callback?.error) {
@@ -84,7 +86,7 @@ const AuthForm = () => {
           }
 
           if (callback?.ok) {
-            router.push("/");
+            // router.push("/");
             toast.success(`welcome back ${data.name}`);
           }
         })
@@ -95,15 +97,15 @@ const AuthForm = () => {
   const socialAction = (action: string) => {
     setIsLoading(true);
 
-    signIn(action, { redirect: false })
+    signIn(action, { redirect: true })
       .then((callback) => {
         if (callback?.error) {
           toast.error("Invalid credentials!");
         }
 
-        if (callback?.ok) {
-          router.push("/conversations");
-        }
+        // if (callback?.ok) {
+        //   router.push("/conversations");
+        // }
       })
       .finally(() => setIsLoading(false));
   };
