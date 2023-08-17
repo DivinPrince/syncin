@@ -1,13 +1,17 @@
+'use client'
+import useFormattedsocialNumbers from "@/hooks/useFormattedsocialNumbers";
 import clsx from "clsx";
 import React from "react";
-import { VscHeartFilled, VscHeart } from "react-icons/vsc";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 interface HeartButtonProps {
   likedByme: boolean;
   likeCount: number;
   onClick: () => void
 }
+
 const HeartButton: React.FC<HeartButtonProps> = ({ likedByme, likeCount, onClick }) => {
-  const HeartIcon = likedByme ? VscHeartFilled : VscHeart;
+  const formattedLikes = useFormattedsocialNumbers(likeCount)
+  const HeartIcon = likedByme ? AiFillHeart : AiOutlineHeart;
   return (
     <button
       className={clsx(
@@ -25,7 +29,8 @@ const HeartButton: React.FC<HeartButtonProps> = ({ likedByme, likeCount, onClick
           likedByme && "fill-red-500 group-focus-visible:fill-red-500"
         )}
       />
-      <span className="texxt[25px]">{likeCount}</span>
+      •
+      <span className="texxt[25px]">{formattedLikes}</span>
     </button>
   );
 };

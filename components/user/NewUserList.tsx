@@ -1,8 +1,11 @@
+'use client'
 import NewUserItem from '@/components/user/NewUserItem'
 import { User } from '@prisma/client'
 import React from 'react'
 import { BiLoaderAlt } from 'react-icons/bi'
 import { motion } from 'framer-motion'
+import HeartButton from '../buttons/HeartButton'
+import CommentButton from '../buttons/CommentButton'
 interface UserListProps {
    items: User[]
 }

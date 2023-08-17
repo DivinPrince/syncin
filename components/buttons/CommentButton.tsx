@@ -1,7 +1,8 @@
 import clsx from "clsx";
 import React from "react";
 import { VscComment } from "react-icons/vsc";
-import { BsMessenger } from "react-icons/bs";
+import { AiFillMessage, AiOutlineMessage } from "react-icons/ai";
+import useFormattedsocialNumbers from "@/hooks/useFormattedsocialNumbers";
 interface HeartButtonProps {
   commentedByme: boolean;
   commentCount: number;
@@ -12,7 +13,8 @@ const CommentButton: React.FC<HeartButtonProps> = ({
   commentCount,
   onClick,
 }) => {
-  const CommentIcon = commentedByme ? BsMessenger : VscComment;
+  const formattedCount = useFormattedsocialNumbers(commentCount)
+  const CommentIcon = commentedByme ? AiFillMessage : AiOutlineMessage;
   return (
     <button
       onClick={onClick}
@@ -27,10 +29,11 @@ const CommentButton: React.FC<HeartButtonProps> = ({
         size={25}
         className={clsx(
           `transition-colors duration-200 group-hover:fill-gray-500`,
-          commentedByme && "fill-red-500 group-focus-visible:fill-red-500"
+          commentedByme && "fill-white group-focus-visible:fill-white"
         )}
       />
-      <span className="texxt[25px]">{commentCount}</span>
+      •
+      <span className="texxt[25px]">{formattedCount}</span>
     </button>
   );
 };

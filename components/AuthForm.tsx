@@ -58,7 +58,7 @@ const AuthForm = () => {
         .then(() =>
           signIn("credentials", {
             ...data,
-            redirect: true,
+            redirect: false,
           })
         )
         .then((callback) => {
@@ -67,7 +67,7 @@ const AuthForm = () => {
           }
 
           if (callback?.ok) {
-            // router.push("/");
+            router.push("/");
             toast.success(`let's syncin ${data.name}`);
           }
         })
@@ -78,7 +78,7 @@ const AuthForm = () => {
     if (variant === "LOGIN") {
       signIn("credentials", {
         ...data,
-        redirect: true,
+        redirect: false,
       })
         .then((callback) => {
           if (callback?.error) {
@@ -86,7 +86,7 @@ const AuthForm = () => {
           }
 
           if (callback?.ok) {
-            // router.push("/");
+            router.push("/");
             toast.success(`welcome back ${data.name}`);
           }
         })
@@ -97,7 +97,7 @@ const AuthForm = () => {
   const socialAction = (action: string) => {
     setIsLoading(true);
 
-    signIn(action, { redirect: true })
+    signIn(action, { redirect: false })
       .then((callback) => {
         if (callback?.error) {
           toast.error("Invalid credentials!");

@@ -6,7 +6,7 @@ const usePosts = () => {
   const { data, error, isLoading, mutate } = useSWR("/api/posts", fetcher);
 
   return {
-    data: [],
+    data,
     error,
     isLoading,
     mutate,

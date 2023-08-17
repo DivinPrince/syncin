@@ -11,5 +11,5 @@ export type FullConversationType = Conversation & {
 }
 
 export type PostType = Post & {
-   coments: Comment[]
+   comments: Comment[]
 }

@@ -1,24 +1,24 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Post } from '@prisma/client'
 import PostCard from '@/components/posts/PostCard'
 import PostCardLoader from '@/components/posts/PostCardLoader'
 import { PostType } from '@/types'
 import usePosts from '@/hooks/usePosts'
+import getPosts from '@/app/actions/getPosts'
 interface PostListProps {
-  userId?: string
+  items: PostType[]
 }
 const PostList: React.FC<PostListProps> = ({
-  userId
+  items
 }) => {
-  const { data: posts} = usePosts();
-  console.log(posts);
-  
+
+  const [posts, setPosts] = useState(items || [])
   return (
     <div className="w-full flex flex-wrap justify-center gap-4">
-      {posts.map((post: PostType) => (
-        <PostCard key={post.id} data={post} />
+      {posts.map((post) => (
+        <PostCard key={post.id} data={post}/>
       ))}
     </div>
   );

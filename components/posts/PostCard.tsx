@@ -7,7 +7,6 @@ import Image from 'next/image'
 import HeartButton from '../buttons/HeartButton'
 import CommentButton from '../buttons/CommentButton'
 import CommentItem from '../comments/CommentItem'
-import { useSession } from 'next-auth/react'
 import CommentList from '../comments/CommentList'
 import { clsx } from 'clsx'
 import useUser from '@/hooks/useUser'
@@ -26,7 +25,6 @@ interface PostCardPromps {
 const PostCard: React.FC<PostCardPromps> = ({
   data
 }) => {
-  const session = useSession()
   const [showComment, setshowComment] = useState(false)
   const [likes, setLikes] = useState(data.likedIds)
   const { data: fetchedUser } = useUser(data.CreatorId);
@@ -56,7 +54,7 @@ const PostCard: React.FC<PostCardPromps> = ({
     setshowComment(!showComment)
   }
   const { likedByMe, like } = useLike(data.id)
-  const commentedByme = data.coments?.indexOf(currentUser.id) !== -1
+  const commentedByme = data.comments?.indexOf(currentUser?.id) !== -1
 
   return (
     <div className="flex flex-col gap-4 border-b px-4 py-4 w-[500px]">
@@ -76,7 +74,7 @@ const PostCard: React.FC<PostCardPromps> = ({
           onClick={()=>{like}}
         />
         <CommentButton
-          commentCount={data.coments.length || 0}
+          commentCount={data?.comments?.length || 0}
           commentedByme={commentedByme}
           onClick={()=>{}}
         />

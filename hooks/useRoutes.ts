@@ -4,6 +4,7 @@ import useConversation from "./useConversation";
 
 import { HiHome, HiChat, HiUsers } from 'react-icons/hi'
 import { BiPlus, BiSearch, BiSolidPlusSquare } from 'react-icons/bi'
+import { AiFillEdit, AiFillHome, AiFillMessage, AiOutlineGroup } from "react-icons/ai";
 
 const useRoutes = () => {
    const params = useParams()
@@ -13,25 +14,25 @@ const useRoutes = () => {
 
    const routes = useMemo(() => [
       {
-         icon: HiHome,
+         icon: AiFillHome,
          label: 'Home',
          active: pathname === '/',
          href: '/'
       },
       {
-         icon: HiChat,
+         icon: AiFillMessage,
          label: 'Messages',
          active: pathname === '/messages',
          href: '/messages'
       },
       {
-         icon: HiUsers,
+         icon: AiOutlineGroup,
          label: 'SyncMates',
          active: pathname === '/syncmates',
          href: '/syncmates'
       },
       {
-         icon: BiSolidPlusSquare,
+         icon: AiFillEdit,
          label: 'Create post',
          active: pathname === '/posts/new',
          href: '/posts/new'
