@@ -46,6 +46,8 @@ export async function DELETE(
   { params }: { params: { postId: string } }
 ) {
   try {
+    const currentUser = await getCurrentUser();
+    const userId = currentUser?.id;
     const postId = params.postId;
     if (!userId || typeof userId !== "string") {
       throw new Error("Invalid ID");
