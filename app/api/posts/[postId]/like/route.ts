@@ -8,8 +8,8 @@ export async function POST(
   { params }: { params: { postId: string } }
 ) {
   try {
-    const body = await req.json();
-    const { userId } = body;
+    const currentUser = await getCurrentUser();
+    const userId = currentUser?.id;
     const postId = params.postId;
     const post = await prisma.post.findUnique({
       where: {
@@ -47,8 +47,6 @@ export async function DELETE(
 ) {
   try {
     const postId = params.postId;
-    const currentUser = await getCurrentUser();
-    const userId = currentUser?.id;
     if (!userId || typeof userId !== "string") {
       throw new Error("Invalid ID");
     }
