@@ -13,8 +13,6 @@ import {
    FormMessage,
 } from "@/components/ui/form"
 import { toast } from 'react-hot-toast';
-import ImageUpload from '@/components/ImageUpload';
-import { BiImageAdd, BiTrash } from 'react-icons/bi';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
@@ -59,8 +57,6 @@ const PostForm = () => {
       form.reset()
       router.push("/")
    }
-   const formattedDate = format(new Date("2023-09-15T09:57:14.302Z"), "MMMM d, yyyy");
-   console.log(formattedDate);
    
    return (
       <Form {...form}>

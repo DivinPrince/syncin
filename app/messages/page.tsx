@@ -7,7 +7,6 @@ import { Empty } from "@/components/ui/Empty";
 
 export default function page() {
   const { isOpen } = useConversation();
-  console.log(isOpen);
 
   return (
     <div

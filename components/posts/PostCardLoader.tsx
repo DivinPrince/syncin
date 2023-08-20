@@ -2,8 +2,6 @@ import React from 'react'
 import Skeleton from "react-loading-skeleton"
 
 const PostCardLoader = () => {
-   console.log('loading');
-   
   return (
     <div className="flex flex-col gap-4 border-b px-4 py-4">
       loading

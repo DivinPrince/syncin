@@ -22,11 +22,13 @@ const useLike = (postId: string) => {
          let request;
           
          if (likedByMe) {
-               request = () => axios.delete(`/api/posts/${postId}/like`, { data: { userId } });
+            request = () => axios.delete(`/api/posts/${postId}/like`,{});
+            await request()
+            toast.success('Success');
          }else{
             request = () =>
-              axios.post(`/api/posts/${postId}/like`, { userId }).then(() => {});
-            await request();
+            axios.post(`/api/posts/${postId}/like`, { userId: userId }).then(() => {});
+            await request()
             toast.success('Success');
          }
       } catch (error) {

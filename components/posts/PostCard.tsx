@@ -26,10 +26,10 @@ const PostCard: React.FC<PostCardPromps> = ({
   data
 }) => {
   const [showComment, setshowComment] = useState(false)
-  const [likes, setLikes] = useState(data.likedIds)
-  const { data: fetchedUser } = useUser(data.CreatorId);
+  const [likes, setLikes] = useState(data?.likedIds || [])
+  const { data: fetchedUser } = useUser(data?.CreatorId);
   const {data: currentUser} = useCurrentUser()
-  const formattedDate = format(new Date(data.createdAt), "MMMM d, yyyy");
+  const formattedDate = format(new Date(data?.createdAt), "MMMM d, yyyy");
   const postId = data.id
   useEffect(() => {
     pusherClient.subscribe(postId)
@@ -39,7 +39,6 @@ const PostCard: React.FC<PostCardPromps> = ({
         if (find(current, likeId)) {
           return current;
         }
-
         return [...current, likeId]
       });
 
@@ -66,12 +65,12 @@ const PostCard: React.FC<PostCardPromps> = ({
         </div>
         <span className="text-gray-500">{formattedDate}</span>
       </div>
-      <Image className="rounded-xl w-full" src={data.image!} width={500} alt="image" />
+      <Image className="rounded-xl w-full" src={data.image!} width={500} height={500} alt="image" />
       <div className="flex gap-4">
         <HeartButton
           likeCount={likes.length || 0}
           likedByme={likedByMe}
-          onClick={()=>{like}}
+          onClick={like}
         />
         <CommentButton
           commentCount={data?.comments?.length || 0}

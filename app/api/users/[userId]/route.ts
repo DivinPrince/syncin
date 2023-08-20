@@ -27,23 +27,7 @@ export async function GET(
         },
       },
     });
-    // let data;
-
-    // if (userId == '123') {
-    //   data = {
-    //     id: userId,
-    //     name: "dp",
-    //     image: "/images/other.png",
-    //   };
-    // }else{
-    //   data = {
-    //     id: userId,
-    //     name: "Ai",
-    //     image: "/images/ai.png",
-    //   };
-    // }
     return NextResponse.json({ ...existingUser, syncMatesCount });
-    // return NextResponse.json(data);
   } catch (error) {
     console.log(error);
   }

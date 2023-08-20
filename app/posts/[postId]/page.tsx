@@ -11,8 +11,7 @@ const PostView = ({ params }: { params: Iparams }) => {
 
   return (
     <div className="bg-neutral-900 rounded-[5px] h-full w-full overflow-hidden overflow-y-auto">
-      {/* <Post postId={postId}/> */}
-      hi
+      <Post postId={postId}/>
     </div>
   );
 };

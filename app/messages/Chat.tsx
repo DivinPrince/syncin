@@ -12,9 +12,7 @@ const MessageInput= () => {
   };
 
   const handleEmojiClick = (emoji: any) => {
-    setMessage((prevMessage) => prevMessage + emoji.native);
-    console.log(emoji);
-    
+    setMessage((prevMessage) => prevMessage + emoji.native);    
   };
 
   return (

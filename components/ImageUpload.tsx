@@ -22,8 +22,6 @@ const ImageUpload: FC<ImageUploadProps> = ({ onUpload, usedrag,children }) => {
     e.preventDefault();
     e.stopPropagation();
 
-    console.log(e);
-    
     
   }
   return (

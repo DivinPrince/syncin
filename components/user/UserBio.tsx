@@ -13,7 +13,6 @@ interface bioProps {
 const UserBio: React.FC<bioProps> = ({ userId }) => {
   const { data: fetchedUser, error, isLoading, mutate } = useUser(userId);
   const { data: currentUser } = useCurrentUser();
-  console.log(fetchedUser, currentUser);
   if (isLoading) {
     return <UserBioLoader />;
   }
