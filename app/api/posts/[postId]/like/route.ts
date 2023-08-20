@@ -34,8 +34,9 @@ export async function POST(
         likedIds: updatedLikeIds,
       },
     });
-
+    
     pusherServer.trigger(postId, "like:new", updatedLikeIds);
+    return NextResponse.json(UpdatedPost);
   } catch (error) {
     console.log("LIKE_ERROR", error);
     return NextResponse.error();

@@ -24,11 +24,9 @@ const useLike = (postId: string) => {
          if (likedByMe) {
             request = () => axios.delete(`/api/posts/${postId}/like`,{});
             await request()
-            toast.success('Success');
          }else{
-            request = () =>
-            axios.post(`/api/posts/${postId}/like`, { userId: userId }).then(() => {});
-            await request()
+            request = () => axios.post(`/api/posts/${postId}/like`, { userId: userId }).then(() => {});
+            await request();
             toast.success('Success');
          }
       } catch (error) {
