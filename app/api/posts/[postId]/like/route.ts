@@ -23,7 +23,7 @@ export async function POST(
     let updatedLikeIds = [...(post?.likedIds || [])];
 
     if (!updatedLikeIds.includes(userId)) {
-      updatedLikeIds.push(userId);
+      updatedLikeIds.push(userId as string);
     }
 
     const UpdatedPost = prisma.post.update({
