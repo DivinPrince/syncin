@@ -4,7 +4,6 @@ import PostCard from './PostCard';
 import Form from '../Form';
 import CommentList from '../comments/CommentList';
 import usePost from '@/hooks/usePost';
-import { pusherClient } from '@/lib/pusher';
 interface postProps {
   postId: string
 }

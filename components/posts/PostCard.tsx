@@ -1,14 +1,9 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-
-import { Post } from '@prisma/client'
 import Avatar from '../Avatar'
 import Image from 'next/image'
 import HeartButton from '../buttons/HeartButton'
 import CommentButton from '../buttons/CommentButton'
-import CommentItem from '../comments/CommentItem'
-import CommentList from '../comments/CommentList'
-import { clsx } from 'clsx'
 import useUser from '@/hooks/useUser'
 import { PostType } from '@/types'
 import { format } from 'date-fns'
@@ -16,7 +11,6 @@ import useCurrentUser from '@/hooks/useCurrentUser'
 import useLike from '@/hooks/useLike'
 import { pusherClient } from '@/lib/pusher'
 import { find } from 'lodash'
-import { GoOrganization } from 'react-icons/go'
 
 interface PostCardPromps {
   data: PostType

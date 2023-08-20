@@ -24,12 +24,19 @@ const MessageInput: React.FC<MessageInputProps> = ({
 }) => {
   const [message, setMessage] = useState<string>("");
   const [showEmojiPicker, setShowEmojiPicker] = useState<boolean>(false);
-  const bottomRef = useRef<HTMLDivElement>(null);
+
+  const ref = useRef<HTMLInputElement>(null)
+  const handleEmojiClick = (emoji: any) => {
+    if (ref?.current) {
+      ref.current.value += emoji.native
+
+    }
+  };
 
   return (
     <>
       <BiLaugh
-        // onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+        onClick={() => setShowEmojiPicker(!showEmojiPicker)}
         size={35}
         className="text-gray-500 cursor-pointer"
       />
@@ -37,12 +44,12 @@ const MessageInput: React.FC<MessageInputProps> = ({
         <div className="absolute bottom-24">
           <EmojiPicker
             data={data}
-            // onEmojiSelect={handleEmojiClick}
+            onEmojiSelect={handleEmojiClick}
             title="Pick your emoji"
             emoji="point_up"
           />
         </div>
-      )}
+      )}  
       <div className="relative w-full">
         <input
           id={id}
@@ -60,6 +67,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
           rounded-full
           focus:outline-none
         "
+        ref={ref}
         />
       </div>
     </>

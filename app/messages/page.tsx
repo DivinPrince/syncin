@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Chat from "./Chat";
 import useConversation from "@/hooks/useConversation";
 import clsx from "clsx";
 import { Empty } from "@/components/ui/Empty";

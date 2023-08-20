@@ -21,7 +21,7 @@ body,
 
 *::-webkit-scrollbar-track {
   /* background: var(--white); */
-  border-left: 1px solid grey;
+  border-left: 1px solid #27272a;
   padding: 3px;
 }
 
@@ -65,9 +65,6 @@ svg {
   @apply text-neutral-400;
 }
 
-.header {
-  border-bottom: 1px solid grey;
-}
 
 .list {
   position: sticky;
@@ -78,7 +75,7 @@ svg {
 }
 
 .aside {
-  border-left: 1px solid grey;
+  border-left: 1px solid #27272a;
 }
 
 @layer base {

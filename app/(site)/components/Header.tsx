@@ -15,30 +15,16 @@ interface DesktopSideBarProps {
 }
 
 const Header: React.FC<DesktopSideBarProps> = ({ currentUser }) => {
-
-  const router = useRouter();
-
-  let users = [
-    {
-      name: "",
-    },
-    {
-      name: "",
-    },
-    {
-      name: "",
-    },
-  ];
   return (
     <div
       className="
-         header
          h-fit
          sticky
          top-0
          p-2
          bg-neutral-900
          z-10
+         border-b
       "
     >
       <div
